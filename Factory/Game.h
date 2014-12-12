@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include "Factory.h"
 
 using std::shared_ptr;
 //定义四个方向枚举
@@ -16,7 +17,9 @@ enum Direction
 class MapSite
 {
 public:
+    //纯虚的进入方法
     virtual void Enter() = 0;
+    //设为虚析构函数
     virtual ~MapSite() = default;
 };
 
@@ -26,9 +29,7 @@ class Room : public MapSite
 public:
     //拷贝控制部分
     Room()
-    {
-        num = Room::getnum();
-    }
+        :sites(),num(Room::getnum()){ }
     virtual ~Room() = default;
     //不允许拷贝赋值
     Room(const Room&) = delete;
@@ -36,6 +37,8 @@ public:
 
     //获取该方向的组件（墙壁或门）
     shared_ptr<MapSite> GetSite(Direction) const;
+    //获取房间号
+    unsigned int GetRoomNum();
     //设置该方向的组件
     void SetSite(Direction,shared_ptr<MapSite>);
     //实现Enter方法
@@ -86,14 +89,16 @@ private:
 
 //整个迷宫类
 //用来产生迷宫
+//使用单例模式
 class Maze
 {
 public:
-    Maze() = default;
-    //使用一个工厂产生迷宫的各个房间
-    void CreateMaze();
+    //使用工厂产生迷宫
+    static shared_ptr<Maze> CreateMaze(MazeFactory&);
     //显示所有房间信息
     void ShowRoom(std::ostream&);
+    //添加房间
+    void AddRoom(shared_ptr<Room> room);
 private:
     //保存所有房间指针
     std::vector<shared_ptr<Room>> rooms;

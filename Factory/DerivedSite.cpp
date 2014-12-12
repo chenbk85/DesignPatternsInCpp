@@ -16,7 +16,7 @@ bool EnchantedDoor::check() const
     return !fuck.compare(this->spell);
 }
 
-void EnchantedDoor::SetSpell(string const & s)
+void EnchantedDoor::SetSpell(const string& s)
 {
     this->spell = s;
 }

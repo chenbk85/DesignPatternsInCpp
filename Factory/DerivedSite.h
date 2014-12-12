@@ -10,8 +10,7 @@ using std::string;
 //定义一个镜面墙壁
 class MirrorWall : public Wall
 {
-    MirrorWall()
-            : Wall(){}
+    MirrorWall() = default;
     ~MirrorWall() = default;
     virtual void Enter() final;
 };
