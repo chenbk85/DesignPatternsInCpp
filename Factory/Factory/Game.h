@@ -20,7 +20,7 @@ public:
     //纯虚的进入方法
     virtual void Enter() = 0;
     //设为虚析构函数
-    virtual ~MapSite() = default;
+    virtual ~MapSite() = 0;
 };
 
 //房间类

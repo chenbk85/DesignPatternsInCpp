@@ -2,14 +2,13 @@
 定义各自的独特性质
  */
 #pragma once
-
 #include <string>
 #include "Game.h"
 using std::string;
-
 //定义一个镜面墙壁
 class MirrorWall : public Wall
 {
+public:
     MirrorWall() = default;
     ~MirrorWall() = default;
     virtual void Enter() final;
@@ -18,6 +17,7 @@ class MirrorWall : public Wall
 //一个可以反弹的墙壁
 class ReboundWall : public Wall
 {
+public:
     ReboundWall()
             :Wall(){ }
     ~ReboundWall() = default;
