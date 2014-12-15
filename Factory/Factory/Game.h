@@ -1,14 +1,17 @@
 /*定义游戏基本组件部分
 包括墙壁、门、房间
  */
-#pragma once
+#ifndef GAME
+#define GAME
+
 #include <memory>
 #include <vector>
 #include <map>
 #include <iostream>
-#include "Factory.h"
+//#include "Factory.h"
 
 using std::shared_ptr;
+class MazeFactory;
 //定义四个方向枚举
 enum Direction
 { North,South,East,West };
@@ -20,7 +23,7 @@ public:
     //纯虚的进入方法
     virtual void Enter() = 0;
     //设为虚析构函数
-    virtual ~MapSite() = 0;
+    virtual ~MapSite() = default;
 };
 
 //房间类
@@ -103,3 +106,4 @@ private:
     //保存所有房间指针
     std::vector<shared_ptr<Room>> rooms;
 };
+#endif

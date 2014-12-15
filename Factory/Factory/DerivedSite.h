@@ -1,10 +1,13 @@
 /*定义继承自Room、Door以及Wall的迷宫组件类
 定义各自的独特性质
  */
-#pragma once
+#ifndef DERIVED
+#define DERIVED
+
 #include <string>
 #include "Game.h"
 using std::string;
+
 //定义一个镜面墙壁
 class MirrorWall : public Wall
 {
@@ -51,3 +54,4 @@ public:
     ~NotOpenDoor() = default;
     virtual void Enter() final;
 };
+#endif

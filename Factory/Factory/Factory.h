@@ -1,5 +1,7 @@
 /*定义迷宫抽象工厂
 * 以及几个具体工厂类*/
+#ifndef FACTORY
+#define FACTORY
 
 #include "Game.h"
 #include "DerivedSite.h"
@@ -7,6 +9,10 @@ using std::shared_ptr;
 
 //定义迷宫工厂基类
 //直接设为单例
+class Wall;
+class Door;
+class Room;
+
 class MazeFactory
 {
 public:
@@ -46,3 +52,4 @@ public:
 private:
     UselessmazeFactory() = default;
 };
+#endif

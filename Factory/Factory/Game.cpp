@@ -1,5 +1,6 @@
 //实现基础组件的方法
 #include "Game.h"
+#include "Factory.h"
 
 int Room::getnum()
 {
@@ -66,7 +67,7 @@ shared_ptr<Maze> Maze::CreateMaze(MazeFactory& factory)
     //再使用工厂产生四面墙
     r1->SetSite(Direction::North, d);
     r1->SetSite(Direction::East, factory.MakeWall());
-    r1->SetSite(Direction::West , factory.MakeWall()));
+    r1->SetSite(Direction::West , factory.MakeWall());
     r1->SetSite(Direction::South , factory.MakeWall());
     r2->SetSite(Direction::South , d);
     r2->SetSite(Direction::East , factory.MakeWall());
@@ -82,5 +83,9 @@ void Maze::ShowRoom(std::ostream& out)
         out << c->GetRoomNum() << "\n";
 }
 
+void Maze::AddRoom(shared_ptr<Room> room)
+{
+    rooms.push_back(room);
+}
 
 
